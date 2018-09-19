@@ -5,16 +5,16 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" defer></script>
-    
+
     <!-- External CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css">
-    
+
     <!-- External Javascript -->
     <script src="assets/script/jdcUtil.js" defer></script>
     <script src="assets/script/game.js" defer></script>
@@ -28,17 +28,176 @@
     <div id="body" class="container-fluid p-4">
 
         <!-- Row 1: Game Title and Messages -->
-        <div id="body-row-1" class="row">
-            <div id="body-row-1-col-1" class="col-12">
-                <div class="jumbotron mb-3 text-center">
-                    <h1 id="game-title" class="display-4">World Lucha Championship</h1>
-                    <hr class="my-3">
-                    <p id="game-message" class="lead">$MESSAGE</p>
-                </div>                
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="jumbotron text-center p-4 mb-0">
+                    <h1 id="game-title" class="display-4 mb-4">World Lucha Championship</h1>
+                    <div id="game-messages" class="alert alert-info p-4 mb-0">
+                        <p id="game-message-0" class="lead mn-0">[ game.messages[ 0 ] ]</p>
+                        <p id="game-message-1" class="lead mb-0">[ game.messages[ 1 ] ]</p>
+                        <p id="game-message-2" class="lead mb-0">[ game.messages[ 2 ] ]</p>
+                        <p id="game-message-3" class="lead mb-0">[ game.messages[ 3 ] ]</p>
+                    </div>
+                </div>
             </div>
         </div>
-    
+        <!-- Row 1: Game Title and Messages -->
+
+        <!-- Row 2: Characters -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-center">Champions</div>
+                    <div class="card-body p-4">
+                        
+                        <!-- Card Container -->
+                        <div class="container p-0">
+                            <div class="row">
+                                <div class="col-3">
+
+                                    <!-- Character Card -->
+                                    <div id="game-character-0" class="card mx-auto" style="width: 200px">
+                                        <img class="card-img-top" src="https://via.placeholder.com/200x150" alt="">
+                                        <div class="card-body px-3 py-2">
+                                            <h5 id="game-character-0-name" class="card-title text-center mb-2">[ character.name ]</h5>
+                                            <p id="game-character-0-title" class="card-text text-center small">[ character.title ]</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Health:</div>
+                                                    <div id="game-character-0-healthPoints" class="col-6 text-right">[ character.healthPoints ]</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Attack:</div>
+                                                    <div id="game-character-0-attackPower" class="col-6 text-right">[ character.attackPower ]</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Counter:</div>
+                                                    <div id="game-character-0-counterAttackPower" class="col-6 text-right">[ character.counterAttackPower ]</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Character Card -->
+
+                                </div>
+                                <div class="col-3">
+
+                                    <!-- Character Card -->
+                                    <div id="game-character-1" class="card mx-auto" style="width: 200px">
+                                        <img class="card-img-top" src="https://via.placeholder.com/200x150" alt="">
+                                        <div class="card-body px-3 py-2">
+                                            <h5 id="game-character-1-name" class="card-title text-center mb-2">[ character.name ]</h5>
+                                            <p id="game-character-1-title" class="card-text text-center small">[ character.title ]</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Health:</div>
+                                                    <div id="game-character-1-healthPoints" class="col-6 text-right">[ character.healthPoints ]</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Attack:</div>
+                                                    <div id="game-character-1-attackPower" class="col-6 text-right">[ character.attackPower ]</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Counter:</div>
+                                                    <div id="game-character-1-counterAttackPower" class="col-6 text-right">[ character.counterAttackPower ]</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Character Card -->
+
+                                </div>
+                                <div class="col-3">
+
+                                    <!-- Character Card -->
+                                    <div id="game-character-2" class="card mx-auto" style="width: 200px">
+                                        <img class="card-img-top" src="https://via.placeholder.com/200x150" alt="">
+                                        <div class="card-body px-3 py-2">
+                                            <h5 id="game-character-2-name" class="card-title text-center mb-2">[ character.name ]</h5>
+                                            <p id="game-character-2-title" class="card-text text-center small">[ character.title ]</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Health:</div>
+                                                    <div id="game-character-2-healthPoints" class="col-6 text-right">[ character.healthPoints ]</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Attack:</div>
+                                                    <div id="game-character-2-attackPower" class="col-6 text-right">[ character.attackPower ]</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Counter:</div>
+                                                    <div id="game-character-2-counterAttackPower" class="col-6 text-right">[ character.counterAttackPower ]</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Character Card -->
+
+                                </div>
+                                <div class="col-3">
+
+                                    <!-- Character Card -->
+                                    <div id="game-character-3" class="card mx-auto" style="width: 200px">
+                                        <img class="card-img-top" src="https://via.placeholder.com/200x150" alt="">
+                                        <div class="card-body px-3 py-2">
+                                            <h5 id="game-character-3-name" class="card-title text-center mb-2">[ character.name ]</h5>
+                                            <p id="game-character-3-title" class="card-text text-center small">[ character.title ]</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Health:</div>
+                                                    <div id="game-character-3-healthPoints" class="col-6 text-right">[ character.healthPoints ]</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Attack:</div>
+                                                    <div id="game-character-3-attackPower" class="col-6 text-right">[ character.attackPower ]</div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-3 py-2">
+                                                <div class="row .no-gutters">
+                                                    <div class="col-6">Counter:</div>
+                                                    <div id="game-character-3-counterAttackPower" class="col-6 text-right">[ character.counterAttackPower ]</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Character Card -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Container -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row 2: Characters -->
+
     </div>
+    <!-- Container: Body -->
+
 </body>
 
 </html>

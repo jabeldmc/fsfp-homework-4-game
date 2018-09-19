@@ -1,17 +1,55 @@
+/*** CONSTRUCTOR Character
+***/
+
+var Character = function( name , title , healthPoints , baseAttackPower , attackPower , counterAttackPower ) {
+    console.group( "CONSTRUCTOR Character" );
+    
+    this.name = name;
+    this.title = title;
+    this.status = CHARACTER_STATUS_OK;
+    this.healthPoints = healthPoints;
+    this.baseAttackPower = baseAttackPower;
+    this.attackPower = attackPower;
+    this.counterAttackPower = counterAttackPower;
+    
+    console.groupEnd();
+};
+
+
+/*** CONSTRUCTOR Game
+***/
+
+var Game = function( character0 , character1 , character2 , character3 ) {
+    console.group( "CONSTRUCTOR Game" );
+
+    this.status = GAME_STATUS_NEW;
+    this.characters = [ character0 , character1 , character2 , character3 ]
+    this.playerCharacter = undefined;
+    this.opponentCharacter = undefined;
+    this.messages = [ MESSAGE_NEW_GAME ];
+
+    console.groupEnd();
+}
+
+
 /*** Global Variables
 ***/
 
+// Game
+var game;    // [object Game]
+
 // Message Templates
-var MESSAGE_GAME_NEW = "CLICK HERE TO START";
-var MESSAGE_CHOOSE_PLAYER = "Welcome to the World Lucha Championship! Select your champion!"
+var MESSAGE_NEW_GAME = "CLICK HERE TO START";
+var MESSAGE_START_GAME = "Welcome to the World Lucha Championship"
+var MESSAGE_CHOOSE_PLAYER = "Select your champion!"
 var MESSAGE_CHOOSE_OPPONENT = "Choose your opponent!"
 var MESSAGE_PLAYER_ATTACKS = "$NAME attacks! $DAMAGE damage!";
 var MESSAGE_OPPONENT_COUNTER_ATTACKS = "$NAME counter attacks! $DAMAGE damage!";
 var MESSAGE_PLAYER_POWER_UP = "$NAME powers up! Attack power is now $ATTACK_POWER!";
 var MESSAGE_KO = "$LOSER_NAME is out! $WINNER_NAME is the winner!";
 
-// Game Status
-GAME_NEW = 0;
+// Game Status (last action performed)
+GAME_STATUS_NEW = 0;
 GAME_STATUS_START = 1;
 GAME_STATUS_CHOOSE_PLAYER_CHARACTER = 2;
 GAME_STATUS_CHOOSE_OPPONENT_CHARACTER = 3;
@@ -24,32 +62,77 @@ GAME_STATUS_WIN = 7;
 CHARACTER_STATUS_OK = 0;
 CHARACTER_STATUS_OUT = 1;
 
-/*** CONSTRUCTOR Character
+
+/*** FUNCTION newGame
 ***/
 
-var Character = function( name , title , healthPoints , baseAttackPower , attackPower , counterAttackPower ) {
-    this.name = name;
-    this.title = title;
-    this.status = CHARACTER_STATUS_OK;
-    this.healthPoints = healthPoints;
-    this.baseAttackPower = baseAttackPower;
-    this.attackPower = attackPower;
-    this.counterAttackPower = counterAttackPower;
-};
+var newGame = function() {
+    console.group( "FUNCTION newGame" );
+
+    var laSombraCharacter = new Character(
+        "La Sombra" ,
+        "El Centinela del Espacio" ,
+        110 ,
+        5 ,
+        9 ,
+        9
+    );
+    var atlantisCharacter = new Character(
+        "Atlantis" ,
+        "El Idolo de los Niños" ,
+        90 ,
+        6 ,
+        8 ,
+        10
+    );
+    var rushCharacter = new Character(
+        "Rush" ,
+        "El Toro Blanco" ,
+        120 ,
+        7 ,
+        10 ,
+        8
+    );
+    var voladorCharacter = new Character(
+        "Volador" ,
+        "El Depredador del Aire" ,
+        110 ,
+        4 ,
+        8 ,
+        11
+    );
+    game = new Game(
+        laSombraCharacter ,
+        atlantisCharacter ,
+        rushCharacter ,
+        voladorCharacter
+    );
+    
+    console.logValue( "game" , game );
+    console.groupEnd();
+}
 
 
-/*** CONSTRUCTOR Game
+/*** FUNCTION startGame
 ***/
 
-var Game = function( character1 , character2 , character3 , character4 ) {
-    this.status = GAME_NEW;
-    this.character1 = character1;
-    this.character2 = character2;
-    this.character3 = character3;
-    this.character4 = character4;
-    this.playerCharacter = undefined;
-    this.opponentCharacter = undefined;
-    this.messages = [ MESSAGE_GAME_NEW ];
+var startGame = function() {
+    console.group( "FUNCTION startGame" );
+
+    // check game status
+    if( game.status === GAME_STATUS_NEW ) {
+        // start game
+        // add message
+        var message = MESSAGE_START_GAME.slice();
+        game.messages.push( message );
+        message = MESSAGE_CHOOSE_PLAYER.slice();
+        game.messages.push( message );
+        // set game status
+        game.status = GAME_STATUS_START;
+    }
+
+    console.logValue( "game" , game );
+    console.groupEnd();
 }
 
 
@@ -57,7 +140,7 @@ var Game = function( character1 , character2 , character3 , character4 ) {
 ***/
 
 var doChoosePlayerCharacter = function( game , playerCharacter ) {
-    console.group( "FUNCTION doChoosePlayerCharacter()" );
+    console.group( "FUNCTION doChoosePlayerCharacter" );
     console.logValue( "game" , game );
     console.logValue( "playerCharacter" , playerCharacter );
     
@@ -73,7 +156,7 @@ var doChoosePlayerCharacter = function( game , playerCharacter ) {
 ***/
 
 var doChooseOpponentCharacter = function( game , opponentCharacter ) {
-    console.group( "FUNCTION doChooseOpponentCharacter()" );
+    console.group( "FUNCTION doChooseOpponentCharacter" );
     console.logValue( "game" , game );
     console.logValue( "opponentCharacter" , opponentCharacter );
     
@@ -89,7 +172,7 @@ var doChooseOpponentCharacter = function( game , opponentCharacter ) {
 ***/
 
 var doFight = function( game ) {
-    console.group( "FUNCTION doFight()" );
+    console.group( "FUNCTION doFight" );
     console.logValue( game );
 
     // variables
@@ -190,82 +273,144 @@ var doFight = function( game ) {
 };
 
 
-/*** FUNCTION handleFightEvent
-***/
-var handleFightEvent = function( event ) {
-    console.group( "FUNCTION handleFightEvent()" );
-    console.logValue( "event" , event );
 
-    console.groupEnd;
-}
+
+
+
 
 
 /*** FUNCTION updateUIMessage
 ***/
 
+var updateUIMessages = function() {
+    console.group( "FUNCTION updateUIMessage" );
+
+    for(
+        var messageIndex = ( game.messages.length - 4 ) , selectorIndex = 0 ;
+        messageIndex < game.messages.length ;
+        messageIndex++ , selectorIndex++
+    )
+    {
+        // console.logValue( "messageIndex" , messageIndex );
+        // console.logValue( "selectorIndex" , selectorIndex );
+
+        var message = game.messages[ messageIndex ];
+        var selector = "#game-message-$INDEX".replace( "$INDEX" , selectorIndex );
+        // console.logValue( "message" , message );
+        // console.logValue( "selector" , selector );
+
+        if ( message === undefined ) {
+            $( selector ).html( "&nbsp;" );
+        }
+        else {
+            $( selector ).text( message );
+        }
+    }
+
+    console.groupEnd();
+}
+
+
+/*** FUNCTION updateUICharacter
+***/
+
+var updateUICharacter = function( characterIndex ) {
+    console.group( "FUNCTION updateUICharacter" );
+    console.logValue( "characterIndex" , characterIndex );
+
+    var characterSelector = "#game-character-$INDEX".replace( "$INDEX" , characterIndex );
+    var nameSelector = ( characterSelector + "-name" );
+    var titleSelector = ( characterSelector + "-title" );
+    var healthPointsSelector = ( characterSelector + "-healthPoints" );
+    var attackPowerSelector = ( characterSelector + "-attackPower" );
+    var counterAttackPowerSelector = ( characterSelector + "-counterAttackPower" );
+    console.logValue( "characterSelector" , characterSelector );
+    console.logValue( "nameSelector" , nameSelector );
+    console.logValue( "titleSelector" , titleSelector );
+    console.logValue( "healthPointsSelector" , healthPointsSelector );
+    console.logValue( "attackPowerSelector" , attackPowerSelector );
+    console.logValue( "counterAttackPowerSelector" , counterAttackPowerSelector );
+
+    $( nameSelector ).text( game.characters[ characterIndex ].name );
+    $( titleSelector ).text( game.characters[ characterIndex ].title );
+    $( healthPointsSelector ).text( game.characters[ characterIndex ].healthPoints.toString() );
+    $( attackPowerSelector ).text( game.characters[ characterIndex ].attackPower.toString() );
+    $( counterAttackPowerSelector ).text( game.characters[ characterIndex ].counterAttackPower.toString() );
+
+    console.groupEnd();
+}
+
+
+/*** FUNCTION updateUICharacters
+***/
+
+var updateUICharacters = function( characterIndex ) {
+    console.group( "FUNCTION updateUICharacters" );
+
+    game.characters.forEach(
+        ( character , characterIndex ) => {
+            updateUICharacter( characterIndex );
+        }
+    );
+
+    console.groupEnd();
+}
+
+
+
 
 /*** FUNCTION updateUI
 ***/
 
+var updateUI = function() {
+    console.group( "FUNCTION updateUI" );
 
-/*** Initialize
+    updateUIMessages();
+    updateUICharacters();
+
+    console.groupEnd();
+}
+
+
+/*** FUNCTION handleFightEvent
+***/
+var handleFightEvent = function( event ) {
+    console.group( "FUNCTION handleFightEvent" );
+    console.logValue( "event" , event );
+
+    console.groupEnd();
+}
+
+
+/*** FUNCTION handleReady()
 ***/
 
-var laSombraCharacter = new Character(
-    "La Sombra" ,
-    "El Centinela del Espacio" ,
-    110 ,
-    5 ,
-    9 ,
-    9
-);
+var handleStartGame = function( event ) {
+    console.group( "FUNCTION handleStartGame()" );
+    console.logValue( "event" , event );
 
-var atlantisCharacter = new Character(
-    "Atlantis" ,
-    "El Idolo de los Niños" ,
-    90 ,
-    6 ,
-    8 ,
-    10
-);
+    startGame();
+    updateUI();
 
-var rushCharacter = new Character(
-    "Rush" ,
-    "El Toro Blanco" ,
-    120 ,
-    7 ,
-    10 ,
-    8
-);
+    console.groupEnd();
+}
 
-var voladorCharacter = new Character(
-    "Volador" ,
-    "El Depredador del Aire" ,
-    110 ,
-    4 ,
-    8 ,
-    11
-);
-
-var game = new Game(
-    laSombraCharacter ,
-    atlantisCharacter ,
-    rushCharacter ,
-    voladorCharacter
-);
-
-
-/*** Text
+/*** FUNCTION handleReady()
 ***/
 
-console.logValue( "laSombraCharacter" , laSombraCharacter );
-console.logValue( "atlantisCharacter" , atlantisCharacter );
-console.logValue( "rushCharacter" , rushCharacter );
-console.logValue( "voladorCharacter" , voladorCharacter );
-console.logValue( "game" , game );
-// doChoosePlayerCharacter( game , laSombraCharacter );
-// doChooseOpponentCharacter( game , atlantisCharacter );
-// doFight( game );
-// doFight( game );
-// doFight( game );
-// console.logValue( "game.messages" , game.messages );
+var handleReady = function() {
+    console.group( "FUNCTION handleReady" );
+
+    newGame();
+    updateUI();
+
+    $( "#game-messages" ).on( "click" , handleStartGame );
+    
+    console.groupEnd();
+}
+
+
+/*** Execute when DOM is fully loaded
+***/
+
+$( handleReady );
