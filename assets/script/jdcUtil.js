@@ -23,14 +23,18 @@ if ( console.logValue ) {
     console.warn( "Overriding existing implementation of `console.logValue()`." );
 }
 console.logValue = function( label , value ) {
-        if ( typeof value === "string" ) {
-            var valueString = ( "\"" + value + "\"" );
-        }
-        else {
-            var valueString = value;
-            // var valueString = console.log( JSON.parse( JSON.stringify( value ) ) );
+    var valueString;
 
-        }
+    if ( typeof value === "object" ) {
+        valueString = value;
+        // valueString = JSON.parse( JSON.stringify( value ) );
+    }
+    else if ( typeof value === "string" ) {
+        valueString = ( "\"" + value + "\"" );
+    }
+    else {
+        valueString = value;
+    }
     console.log(
         Object.prototype.toString.call( value ) ,
         label ,
