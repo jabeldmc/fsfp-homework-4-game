@@ -13,7 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" defer></script>
 
     <!-- External CSS -->
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css"> -->
 
     <!-- External Javascript -->
     <script src="assets/script/jdcUtil.js" defer></script>
@@ -33,7 +33,7 @@
                 <div class="jumbotron text-center p-4 mb-0">
                     <h1 id="game-title" class="display-4 mb-4">World Lucha Championship</h1>
                     <div id="game-messages" class="alert alert-info p-4 mb-0">
-                        <p id="game-message-0" class="lead mn-0">[ game.messages[ 0 ] ]</p>
+                        <p id="game-message-0" class="lead mb-0">[ game.messages[ 0 ] ]</p>
                         <p id="game-message-1" class="lead mb-0">[ game.messages[ 1 ] ]</p>
                         <p id="game-message-2" class="lead mb-0">[ game.messages[ 2 ] ]</p>
                         <p id="game-message-3" class="lead mb-0">[ game.messages[ 3 ] ]</p>
@@ -47,20 +47,20 @@
         <div class="row mb-4">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header text-center">Champions</div>
+                    <div class="card-header text-center lead">Champions</div>
                     <div class="card-body p-4">
                         
                         <!-- Card Container -->
-                        <div class="container p-0">
+                        <div class="container-fluid p-0">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-12 d-inline-flex justify-content-center">
 
                                     <!-- Character Card -->
-                                    <div id="game-character-0" class="card mx-auto" style="width: 200px">
-                                        <img class="card-img-top" src="https://via.placeholder.com/200x150" alt="">
+                                    <div id="game-character-0" class="game-character card mx-2" style="width: 200px">
+                                        <img id="game-character-0-photo" class="card-img-top" src="https://via.placeholder.com/200x120" style="width: 200px; height: 120px">
                                         <div class="card-body px-3 py-2">
-                                            <h5 id="game-character-0-name" class="card-title text-center mb-2">[ character.name ]</h5>
-                                            <p id="game-character-0-title" class="card-text text-center small">[ character.title ]</p>
+                                            <p id="game-character-0-name" class="card-title text-center lead mb-0">[ character.name ]</p>
+                                            <p id="game-character-0-title" class="card-text text-center lead small">[ character.title ]</p>
                                         </div>
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item px-3 py-2">
@@ -85,15 +85,12 @@
                                     </div>
                                     <!-- Character Card -->
 
-                                </div>
-                                <div class="col-3">
-
                                     <!-- Character Card -->
-                                    <div id="game-character-1" class="card mx-auto" style="width: 200px">
-                                        <img class="card-img-top" src="https://via.placeholder.com/200x150" alt="">
+                                    <div id="game-character-1" class="game-character card mx-2" style="width: 200px">
+                                        <img id="game-character-1-photo" class="card-img-top" src="https://via.placeholder.com/200x120" style="width: 200px; height: 120px">
                                         <div class="card-body px-3 py-2">
-                                            <h5 id="game-character-1-name" class="card-title text-center mb-2">[ character.name ]</h5>
-                                            <p id="game-character-1-title" class="card-text text-center small">[ character.title ]</p>
+                                            <p id="game-character-1-name" class="card-title text-center lead mb-0">[ character.name ]</p>
+                                            <p id="game-character-1-title" class="card-text text-center lead small">[ character.title ]</p>
                                         </div>
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item px-3 py-2">
@@ -118,15 +115,12 @@
                                     </div>
                                     <!-- Character Card -->
 
-                                </div>
-                                <div class="col-3">
-
                                     <!-- Character Card -->
-                                    <div id="game-character-2" class="card mx-auto" style="width: 200px">
-                                        <img class="card-img-top" src="https://via.placeholder.com/200x150" alt="">
+                                    <div id="game-character-2" class="game-character card mx-2" style="width: 200px">
+                                        <img id="game-character-2-photo" class="card-img-top" src="https://via.placeholder.com/200x120" style="width: 200px; height: 120px">
                                         <div class="card-body px-3 py-2">
-                                            <h5 id="game-character-2-name" class="card-title text-center mb-2">[ character.name ]</h5>
-                                            <p id="game-character-2-title" class="card-text text-center small">[ character.title ]</p>
+                                            <p id="game-character-2-name" class="card-title text-center lead mb-0">[ character.name ]</p>
+                                            <p id="game-character-2-title" class="card-text text-center lead small">[ character.title ]</p>
                                         </div>
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item px-3 py-2">
@@ -151,15 +145,12 @@
                                     </div>
                                     <!-- Character Card -->
 
-                                </div>
-                                <div class="col-3">
-
                                     <!-- Character Card -->
-                                    <div id="game-character-3" class="card mx-auto" style="width: 200px">
-                                        <img class="card-img-top" src="https://via.placeholder.com/200x150" alt="">
+                                    <div id="game-character-3" class="game-character card mx-2" style="width: 200px">
+                                        <img id="game-character-3-photo" class="card-img-top" src="https://via.placeholder.com/200x120" style="width: 200px; height: 120px">
                                         <div class="card-body px-3 py-2">
-                                            <h5 id="game-character-3-name" class="card-title text-center mb-2">[ character.name ]</h5>
-                                            <p id="game-character-3-title" class="card-text text-center small">[ character.title ]</p>
+                                            <p id="game-character-3-name" class="card-title text-center lead mb-0">[ character.name ]</p>
+                                            <p id="game-character-3-title" class="card-text text-center lead small">[ character.title ]</p>
                                         </div>
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item px-3 py-2">
@@ -194,6 +185,38 @@
             </div>
         </div>
         <!-- Row 2: Characters -->
+
+        <!-- Row 3: The Ring -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-center lead">The Ring</div>
+                    <div class="card-body p-4">
+                        
+                        <!-- Card Container -->
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="col-12 d-inline-flex justify-content-center">
+
+                                    <!-- VS Card -->
+                                    <div id="game-vs" class="mx-2" style="width: 200px">
+                                        <p class="text-center display-2 mb-2">VS</p>
+                                        <div class="w-100 d-inline-flex justify-content-center">
+                                            <button id="game-fight" type="button" class="btn btn-lg btn-danger" disabled>FIGHT</button>
+                                        </div>
+                                    </div>
+                                    <!-- VS Card -->
+                           
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Container -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row 3: The Ring -->
 
     </div>
     <!-- Container: Body -->
