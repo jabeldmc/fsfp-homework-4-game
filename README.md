@@ -3,6 +3,11 @@
 Full Stack Flex Program Homework 04: Game
 
 
+# Portfolio
+
+Game is available in the [responsive](https://jabeldmc.github.io/fsfp-homework-2-responsive-portfolio/portfolio.html) and [Bootstrap](https://jabeldmc.github.io/fsfp-homework-2-bootstrap-portfolio/portfolio.html) portfolio.
+
+
 # Version 1.0.0
 
 * Completed game logic and UI.
